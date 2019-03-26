@@ -76,3 +76,17 @@ str(managers)
 
 new_managers_data <- read.csv("MoreData.csv")
 head(new_managers_data)
+
+attach(new_managers_data)
+converted_date <- as.Date(Date, "%m/%d/%Y")
+converted_date <- format(converted_date, "%d/%m/%Y")
+converted_date
+
+new_managers_data$Date <- converted_date
+
+str(converted_date)
+converted_date
+head(new_managers_data)
+
+merged.data <- merge(managers, new_managers_data, by=c("Date", "Country", "Gender", "Age", "Q1", "Q2", "Q3", "Q4", "Q5"))
+head(merged.data)
